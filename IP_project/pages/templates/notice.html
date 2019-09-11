@@ -38,7 +38,7 @@
 
   <div class="container">
 
-      <form  action="/" method="POST">
+      <form  action="{% url 'notice' %}" method="POST">
           {% csrf_token %}
   <div class="form-group">
       <font size="7"><label for="exampleFormControlTextarea1"  >ADD.. NOTICES</label></font>

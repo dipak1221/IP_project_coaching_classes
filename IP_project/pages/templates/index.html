@@ -26,7 +26,7 @@
             <a href="#" class="text-uppercase">Student Login</a>
           </div>
           <div class="col-lg-3 col-sm-6 col-8 header-top-right">
-            <a href="#" class="text-uppercase">HOD Login</a>
+            <a href="{% url 'login' %}" class="text-uppercase">HOD Login</a>
           </div>
         </div>
       </div>
@@ -124,7 +124,13 @@
   <div class="card-body">
 
     <h5 class="card-title" align="center">Notices</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.n,nvz,n,zjnfklsdzjkl;sadjgjsdlkls dklgjdsflkgjlkdjfgldjklgjdslk;gjldfjgl;djgldsfjg</p>
+    <p class="card-text">
+      <ul type="disk">
+      {% for i in param %}
+    <li>{{ i.notice }}</li>
+      {% endfor %}
+  </ul>
+    </p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
