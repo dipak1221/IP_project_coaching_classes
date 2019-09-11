@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from . models import notices,login_detail
 
 def index(request):
     param = notices.objects.all()
+
+    #reversed(sorted(param.keys()))
+    print(param.values())
     return render(request,'index.html',{'param':param})
 # Create your views here.
 
@@ -10,14 +14,24 @@ def notice(request):
     text = request.POST.get('text')
     check = request.POST.get('check',default='off')
 
-    n= notices.objects.all()
-
-
 
     if(check=='off'):
         print("pls check the check box")
+        return render(request,'notice.html')
 
-    return render(request,'login.html')
+
+
+    if text :
+        n= notices(notice=text)
+        n.save()
+        return HttpResponse("<script>window.alert('Notice has been Submited succesfully');</script>");
+        #pass
+        #return render(request,'index.html')
+
+    else:
+        return HttpResponse("<script>window.alert('Text cannot be Empty');</script>");
+        #return render(request,'index.html')
+
 
 def login(request):
     return render(request,'login.html')
