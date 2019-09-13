@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . models import notices,login_detail
 
+
 def index(request):
     param = notices.objects.all()
 

@@ -10,6 +10,16 @@
 
     <title>Notice</title>
   </head>
+  <script>
+    #rightside{
+    float:right;
+    }
+    @media (min-width: 1200px) {
+    .container{
+        max-width: 500px;
+    }}
+}
+</script>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Notices</a>
@@ -35,8 +45,10 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+  
 
-  <div class="container">
+
+  <div class="container ml-auto" style="text-align:right" >
 
       <form  action="{% url 'notice' %}" method="POST">
           {% csrf_token %}
