@@ -1,34 +1,35 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . models import notices,login_detail
-
+from django.http import HttpResponseRedirect
 
 def index(request):
-    param = notices.objects.all()
-
-    #reversed(sorted(param.keys()))
-    print(param.values())
+    param = list(notices.objects.all())
+    #print(param)
+    param=param[:-6:-1]
+    #print(param)
     return render(request,'index.html',{'param':param})
-# Create your views here.
+
 
 def notice(request):
+
     text = request.POST.get('text')
     check = request.POST.get('check',default='off')
-
+    param=''
 
     if(check=='off'):
+        #return HttpResponse("<script>window.alert('Notice has been Submited succesfully');</script>");
         print("pls check the check box")
-        return render(request,'notice.html')
-
-
+        param="Pls check the check box"
+        return render(request,'notice.html',{'param':param})
 
     if text :
         n= notices(notice=text)
         n.save()
-        return HttpResponse("<script>window.alert('Notice has been Submited succesfully');</script>");
-        #pass
-        #return render(request,'index.html')
+        return HttpResponseRedirect("/index/")
 
+        #return HttpResponse("<script>window.alert('Notice has been Submited succesfully');</script>");
+        #return render(request,'index.html')
     else:
         return HttpResponse("<script>window.alert('Text cannot be Empty');</script>");
         #return render(request,'index.html')
@@ -46,7 +47,7 @@ def verify_login(request):
     for i in param:
         if username == i.username:
             if password == i.password:
-                return render(request,'notice.html')
+                return render(request,"notice.html")
             else:
                 print("password is incorrect ")
                 return render(request,'login.html')
