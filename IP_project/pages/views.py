@@ -34,6 +34,22 @@ def notice(request):
         return HttpResponse("<script>window.alert('Text cannot be Empty');</script>");
         #return render(request,'index.html')
 
+def list_notice(request):
+    param = list(notices.objects.all())
+    param=param[::-1]
+    return render(request,"list_notice.html",{'param':param})
+
+def del_notice(request):
+
+    return HttpResponse("notice has been deleted ")
+
+
+def expand_notice(request):
+    param = list(notices.objects.all())
+    param=param[::-1]
+    print(param)
+    return render(request,"expand_notice.html",{'param':param})
+
 
 def login(request):
     return render(request,'login.html')
@@ -47,7 +63,7 @@ def verify_login(request):
     for i in param:
         if username == i.username:
             if password == i.password:
-                return render(request,"notice.html")
+                return HttpResponseRedirect("/list_notice/")
             else:
                 print("password is incorrect ")
                 return render(request,'login.html')

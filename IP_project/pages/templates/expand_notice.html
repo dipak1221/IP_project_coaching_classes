@@ -1,0 +1,39 @@
+{% extends 'sample.html' %}
+{% block title %}viewNoticee{% endblock %}
+{% block body %}
+
+<!--
+<div class="container">
+    <header>Notices</header>
+       {% for i in param %}
+    <ul type="disk">
+
+        <li>{{i.notice}}</li>
+    </ul>
+    {% endfor %}
+</div>
+-->
+
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="card col-lg-3 mx-5 my-5">
+
+  <div class="card-body">
+
+    <h1 class="card-title" align="center">Notices</h1>
+       <h3><a href="{% url 'index' %}" class="card-link mr-auto"><< GO BACK</a></h3>
+    <p class="card-text">
+
+    <ul type="disk" >
+      {% for i in param %}
+
+        <h2><li>{{i.notice}}</li></h2>
+  </ul>
+      </p>
+    {% endfor %}
+  </div>
+    </div></div></div>
+
+
+{% endblock %}
