@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from . models import notices,login_detail
 from django.http import HttpResponseRedirect
@@ -37,9 +37,14 @@ def notice(request):
 def list_notice(request):
     param = list(notices.objects.all())
     param=param[::-1]
+    #print("list_notice",param)
     return render(request,"list_notice.html",{'param':param})
 
 def del_notice(request):
+    data = get_object_or_404(notices,id='i.id')
+    print(data)
+
+
 
     return HttpResponse("notice has been deleted ")
 
