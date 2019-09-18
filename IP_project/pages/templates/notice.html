@@ -38,7 +38,7 @@
   </div>
 </nav>
 
-  <!--        ending of nav bar -->
+  <!--        ending of nav bar
   {% if param %}
 <div class="alert alert-danger" role="alert">
   <strong>{{ param }}</strong>
@@ -47,6 +47,8 @@
   </button>
 </div>
   {% endif %}
+
+  -->
 
 
 
@@ -61,19 +63,14 @@
 
 
 
-  <div class="container ml-auto" style="text-align:right" >
+  <div class="container ml-auto" style="text-align:left" >
 
-      <form  action="{% url 'notice' %}" method="POST">
+      <form  action="{% url 'add_notice' %}" method="POST">
           {% csrf_token %}
   <div class="form-group">
-      <font size="7"><label for="exampleFormControlTextarea1"  >ADD.. NOTICES</label></font>
-    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="6"></textarea>
+      <font size="7" ><label class="ml-auto" for="exampleFormControlTextarea1"  >ADD.. NOTICES</label></font>
+    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="6">{{text}}</textarea>
   </div>
-
-      <div class="custom-control custom-switch">
-  <input type="checkbox" name='check' class="custom-control-input" id="customSwitch1">
-  <label class="custom-control-label" for="customSwitch1">Add notices</label>
-</div>
 
 
     <button type="submit"  class="btn btn-primary btn-lg" style="float:right">ADD</button>
