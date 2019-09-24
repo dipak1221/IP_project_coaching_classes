@@ -41,12 +41,12 @@
   {% for i in param %}
 
     <tr>
-      <form action="{% url 'notice' %}" method=post>{% csrf_token %}
+      <form action="{% url 'list_notice' %}" method=post>{% csrf_token %}
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{i.notice}}</td>
       <td>{{i.Date}}</td>
-        <td><a href="{% url 'notice' %}"><button type="submit" value ="1{{i.id}}" name="_edit" class="btn btn-primary" >Edit</button></a></td>
-        <td><a href="{% url 'notice' %}"><button  type="submit" value ="2{{i.id}}" name="_edit" class="btn btn-danger">Delete</button></a></td>
+        <td><a href="{% url 'list_notice' %}"><button type="submit" value ="1{{i.id}}" name="_edit" class="btn btn-primary" >Edit</button></a></td>
+        <td><a href="{% url 'list_notice' %}"><button  type="submit" value ="2{{i.id}}" name="_edit" class="btn btn-danger">Delete</button></a></td>
      </form></tr>
   {% endfor %}
    </tbody>

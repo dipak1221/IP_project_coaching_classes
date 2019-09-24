@@ -96,6 +96,29 @@ def add_notice(request):
         #return render(request,'index.html')
 
 def list_notice(request):
+    if request.method=='POST':
+        if(request.POST.get('_edit')):
+            data = request.POST.get('_edit')
+            print(data)
+
+            if data[0]=='1':
+                data=data[1:]
+                #print(data)
+                textdb=notices.objects.get(id=data)
+                text=textdb.notice
+                textdb.delete()
+                return render(request,'notice.html',{'text':text})
+            elif data[0]=='2':
+                data=data[1:]
+                #print(data)
+                text=notices.objects.get(id=data)
+                text.delete()
+                par='''<script language="javascript">
+                alert('Notice has been Deleted');
+                </script>'''
+                param = list(notices.objects.all())
+                param=param[::-1]
+                return render(request,'list_notice.html',{'param':param,'par': par})
     param = list(notices.objects.all())
     param=param[::-1]
 
