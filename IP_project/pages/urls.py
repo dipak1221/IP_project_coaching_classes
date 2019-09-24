@@ -12,7 +12,7 @@ urlpatterns = [
     path('verify_login/',views.verify_login,name='verify_login'),
     path('expand_notice/',views.expand_notice,name='expand_notice'),
     path('list_notice/',views.list_notice,name='list_notice'),
-    path('modify_notice/',views.modify_notice,name='modify_notice'),
+    #path('modify_notice/',views.modify_notice,name='modify_notice'),
 
 
 ]

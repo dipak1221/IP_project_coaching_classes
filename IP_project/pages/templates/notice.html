@@ -69,7 +69,7 @@
           {% csrf_token %}
   <div class="form-group">
       <font size="7" ><label class="ml-auto" for="exampleFormControlTextarea1"  >ADD.. NOTICES</label></font>
-    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="6">{{text}}</textarea>
+    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="6">{% if text %}{{text}}{% endif %}</textarea>
   </div>
 
 
